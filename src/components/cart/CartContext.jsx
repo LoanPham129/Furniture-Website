@@ -24,11 +24,15 @@ const cartReducer = (state, action) => {
       return state.filter((i) => i.id !== action.payload.itemId);
     }
     case "UPDATE_QUANTITY": {
-      const { itemId, newQuantity } = action.payload;
-      return state.map((i) =>
-        i.id === itemId ? { ...i, quantity: Math.max(1, newQuantity) } : i
-      );
-    }
+  const { itemId, newQuantity } = action.payload;
+  if (newQuantity <= 0) {
+    return state.filter((i) => i.id !== itemId);
+  }
+  return state.map((i) =>
+    i.id === itemId ? { ...i, quantity: newQuantity } : i
+  );
+}
+
     default:
       return state;
   }
