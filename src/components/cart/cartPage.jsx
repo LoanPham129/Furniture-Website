@@ -8,17 +8,19 @@ const CartPage = () => {
 
   return (
     <div className=" py-8 px-4 bg-[#fdfbf8] text-amber-900">
-      <h1 className="text-center text-5xl mb-10 mt-16">Your Cart</h1>
+      <h1 className="text-start text-5xl mb-10 mt-16">Your Cart</h1>
 
       {cartItems.length === 0 ? (
         <div className="text-center">
-          <p className="text-xl mb-4">Your cart is empty</p>
-          <Link
-            to="/menu"
-            className="bg-amber-800 text-white px-6 py-2 rounded-full hover:bg-amber-700 transition"
-          >
-            Browse Items
-          </Link>
+          <p className="text-xl mb-10">Your cart is empty</p>
+          <div className="flex justify-end">
+            <Link
+              to="/"
+              className="bg-amber-800 text-white px-6 py-2 rounded-full hover:bg-amber-700 transition"
+            >
+              Back To Home
+            </Link>
+          </div>
         </div>
       ) : (
         <>

@@ -8,7 +8,8 @@ export default function Login({ onSwitch }) {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault()
     login(); 
     navigate("/");
   };

@@ -149,9 +149,9 @@ const Navbar = () => {
               <div className="flex justify-between gap-4">
                 <button
                   onClick={() => {
-                    logout(); // Gọi hàm từ context
-  setShowConfirmLogout(false);
-  navigate("/");
+                    logout();
+                    setShowConfirmLogout(false);
+                    navigate("/");
                   }}
                   className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg cursor-pointer"
                 >
