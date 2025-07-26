@@ -32,6 +32,7 @@ const Home = () => {
         <img
           src={img1}
           alt="sofa"
+          loading="lazy"
           className="w-full h-full px-4 md:px-24 object-contain"
         />
       </div>

@@ -5,15 +5,12 @@ import { useCart } from "./cart/CartContext";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 const Product = () => {
-
-
-
   const { cartItems, addToCart, updateQuantity } = useCart();
   const isInCart = (id) => cartItems.find((item) => item.id === id);
 
   return (
     <section id="product" className="px-12 pb-20">
-      <div className=" flex flex-col md:flex-row  md:justify-between mb-8 md:mb-16 uppercase font-semibold transition-all">
+      <div className=" flex flex-col md:flex-row  md:justify-between mb-8 md:mb-16 uppercase font-semibold transition-transform">
         <h1 className=" text-2xl lg:text-3xl right-0 mb-2 px-5">
           love where you live
         </h1>
@@ -22,13 +19,14 @@ const Product = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 uppercase gap-6 transition-all px-2 mb-16 sm:px-4 cursor-pointer">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 uppercase gap-6 transition-transform px-2 mb-16 sm:px-4 cursor-pointer">
         {furniture.map((fur, i) => (
           <div key={i} className="flex items-center justify-center">
             <div className="relative rounded-xl shadow-md overflow-hidden group w-full max-w-[400px]">
               <img
                 src={fur.image}
                 alt={fur.title}
+                loading="lazy"
                 className="object-cover w-full h-[300px] sm:h-[250px] md:h-[350px] lg:h-[450px] transition-all duration-300"
               />
               <div className="absolute bottom-4 left-0 right-0 px-5 flex items-center justify-between text-white">
@@ -42,7 +40,7 @@ const Product = () => {
         ))}
       </div>
 
-      <div className=" flex-col mt-20 mb-20 transition-all w-full md:w-1/2 lg:w-2/5 px-5">
+      <div className=" flex-col mt-20 mb-20 transition-transform w-full md:w-1/2 lg:w-2/5 px-5">
         <h1 className=" text-xl md:text-2xl lg:text-3xl uppercase font-semibold mb-5">
           new arrivals
         </h1>
@@ -61,40 +59,46 @@ const Product = () => {
               <img
                 src={products.img}
                 alt={products.title}
+                loading="lazy"
                 className=" object-cover w-[400px] sm:w-full h-[320px] sm:h-[320px] lg:h-[380px] bg-[#f9f6f1] rounded-3xl transition-all duration-300"
               />
 
               <div className="absolute bottom-4 left-0 right-0 px-5 flex justify-center">
-  {products && isInCart(products.id) ? (
-    <div className="flex gap-3 items-center">
-      <button
-        onClick={() =>
-          updateQuantity(products.id, isInCart(products.id).quantity - 1)
-        }
-        className="w-10 h-10 bg-red-800 hover:opacity-80 text-white rounded-full cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-center"
-      >
-        <FaMinus />
-      </button>
-      <span className="">{isInCart(products.id).quantity}</span>
-      <button
-        onClick={() =>
-          updateQuantity(products.id, isInCart(products.id).quantity + 1)
-        }
-        className="w-10 h-10 bg-red-800 hover:opacity-80 text-white rounded-full cursor-pointer transition-all duration-300 ease-in-out flex items-center justify-center"
-      >
-        <FaPlus />
-      </button>
-    </div>
-  ) : (
-    <button
-      onClick={() => addToCart(products, 1)}
-      className="w-fit h-10 uppercase bg-red-800 hover:opacity-80 text-white rounded-full cursor-pointer transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out m-2 px-4 py-2"
-    >
-      add to cart
-    </button>
-  )}
-</div>
-
+                {products && isInCart(products.id) ? (
+                  <div className="flex gap-3 items-center">
+                    <button
+                      onClick={() =>
+                        updateQuantity(
+                          products.id,
+                          isInCart(products.id).quantity - 1
+                        )
+                      }
+                      className="w-10 h-10 bg-red-800 hover:opacity-80 text-white rounded-full cursor-pointer transition-transform duration-300 ease-in-out flex items-center justify-center"
+                    >
+                      <FaMinus />
+                    </button>
+                    <span className="">{isInCart(products.id).quantity}</span>
+                    <button
+                      onClick={() =>
+                        updateQuantity(
+                          products.id,
+                          isInCart(products.id).quantity + 1
+                        )
+                      }
+                      className="w-10 h-10 bg-red-800 hover:opacity-80 text-white rounded-full cursor-pointer transition-transform duration-300 ease-in-out flex items-center justify-center"
+                    >
+                      <FaPlus />
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => addToCart(products, 1)}
+                    className="w-fit h-10 uppercase bg-red-800 hover:opacity-80 text-white rounded-full cursor-pointer transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out m-2 px-4 py-2"
+                  >
+                    add to cart
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className=" uppercase mb-4 ">

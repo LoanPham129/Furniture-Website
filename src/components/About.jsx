@@ -5,7 +5,6 @@ import bg from "../assets/fix-bg.jpg";
 import profile1 from "../assets/profile1.jpg";
 import profile2 from "../assets/profile2.jpg";
 import profile3 from "../assets/profile3.jpg";
-import { Parallax } from "react-scroll-parallax";
 import { FaShippingFast } from "react-icons/fa";
 import { FaHeadset, FaCreditCard } from "react-icons/fa6";
 
@@ -54,6 +53,7 @@ const About = () => {
             <img
               src={bedroom}
               alt="bedroom"
+              loading="lazy"
               className=" absolute top-20 -left-8 md:-left-24 w-[150px] h-[200px] md:w-[200px] md:h-[250px] rounded-2xl shadow-md z-20 -rotate-8"
             />
             <img
@@ -79,7 +79,7 @@ const About = () => {
         </div>
       </div>
 
-      <Parallax className="mb-20">
+      <div className="mb-20">
         <div className="  relative w-full h-[350px]">
           <img src={bg} alt="img" className="w-full h-full object-cover " />
           <div className="absolute inset-0 bg-black/50 z-10" />
@@ -99,7 +99,7 @@ const About = () => {
             </button>
           </div>
         </div>
-      </Parallax>
+      </div>
 
       <div className=" w-[450px] md:w-[700px] px-16 mb-32 transition-all">
         <h1 className=" uppercase font-medium text-amber-800 text-xl md:text-4xl mb-5">
@@ -113,7 +113,7 @@ const About = () => {
         </p>
       </div>
 
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 px-16 gap-10 transition-all mb-32">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 px-16 gap-10 transition-transform mb-32">
         {profile.map((p, i) => (
           <div
             key={i}
@@ -122,7 +122,7 @@ const About = () => {
             <img
               src={p.img}
               alt={p.name}
-              className=" absolute w-20 h-20 rounded-full object-cover -top-10 left-1/2 transform -translate-x-3/2 md:-translate-x-4/2 lg:-translate-x-5/2 border-4 border-white shadow-md transition-all"
+              className=" absolute w-20 h-20 rounded-full object-cover -top-10 left-1/2 transform -translate-x-3/2 md:-translate-x-4/2 lg:-translate-x-5/2 border-4 border-white shadow-md transition-transform"
             />
             <div className=" flex-col items-center justify-center">
               <h1 className=" text-3xl text-black py-3">{p.name}</h1>

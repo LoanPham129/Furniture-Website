@@ -34,6 +34,7 @@ const Footer = () => {
       <img
         src={bg}
         alt="footer-bg"
+        loading="lazy"
         className=" absolute w-full h-full object-cover "
       />
       <div className="absolute inset-0 bg-black/50 backdrop-blur-md z-0" />
